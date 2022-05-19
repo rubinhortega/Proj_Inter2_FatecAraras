@@ -13,9 +13,6 @@ SOS é uma aplicação full stack web construída durante o 2º Semestre de Dese
 A aplicação consiste em dar apoio para os grupos de desastres naturais, por ajudar com as informações que as prórias pessoas e parentes que são cadastrada no sistema de ajuda. E terá sistema de informações para o publico e para quem estão procurando parentes ou amigos que estavam no desastre.
 
 
-## Layout Web
-
-## Modelo conceitual
 
 # Tecnologia utilizadas
 
@@ -28,8 +25,8 @@ A aplicação consiste em dar apoio para os grupos de desastres naturais, por aj
 - Front end web: 
 - Banco de dados: Oracle
 
-# Como executar o projeto
-
+## Metodologia ágil 
+- Scrum 
 
 # Autores
 
@@ -44,3 +41,13 @@ Marcel: https://www.linkedin.com/in/marcel-araujo-3515272a/<br/>
 Rubens: https://www.linkedin.com/in/rubens-dirceu-ortega-junior-3b306131/<br/>
 William: https://www.linkedin.com/in/william-fortes-231b5761/
 
+# Agradecimento 
+
+## Professores
+- Jonas Bôde - Engenharia de Software II <br/>
+- Nilton Sacco - Banco de Dados - Relacional <br/>
+- Orlando Saraiva - Desenvolvimento Web II <br/>
+
+## Intituição
+- Faculdade de Tecnologia do Centro Paula Souza - Fatec Araras<br/>
+https://fatecararas.cps.sp.gov.br/
