@@ -68,7 +68,7 @@ class Pessoa
                                                 END_CEP,
                                                 END_COM,
                                                 END_UF) 
-                                        VALUES(NEXT VALUE FOR PESSOA_SEQ,
+                                         VALUES(NEXT VALUE FOR PESSOA_SEQ,
                                                 :CPF,
                                                 :NOME,
                                                 :FONE,
@@ -126,9 +126,31 @@ class Pessoa
                                      END_UF           = :END_UF
                                WHERE ID_PESSOA = :ID_PESSOA';
 
-    private $sql_delete = 'DELETE 
-                             FROM PESSOA 
-                            WHERE ID_PESSOA = :ID_PESSOA';
+    private $sql_del = 'DELETE 
+                          FROM PESSOA 
+                         WHERE ID_PESSOA = :ID_PESSOA';
+    
+    private $sql_loc = 'SELECT COUNT(*) REGS FROM PESSOA WHERE ID_PESSOA = :ID_PESSOA';
+
+    private $sql_get = 'SELECT ID_ALUNO, 
+                               NOME,
+                               FONE,
+                               EHWHATS,
+                               EMAIL,
+                               ATIVO,
+                               EHOFICIAL,
+                               LIB_CADDESASTRE,
+                               REGISTRO_OFICIAL,
+                               CONTATOS,
+                               END_LOG,
+                               END_NUM,
+                               END_BAI,
+                               END_CID,
+                               END_CEP,
+                               END_COM,
+                               END_UF
+                          FROM PESSOA 
+                         WHERE ID_PESSOA = :ID_PESSOA';
     //*************************************************
 
     //*************************************************
@@ -343,7 +365,6 @@ class Pessoa
                 }
                 else
                     return $rec;
-                    
             }
         } catch(PDOException $e) 
         {
@@ -358,7 +379,7 @@ class Pessoa
         {
             $this->DB = new Conn;
 
-            $sql = $this->sql_delete;
+            $sql = $this->sql_del;
 
             if ($this->DB->PreparaSQL($sql))
             {
@@ -383,87 +404,62 @@ class Pessoa
             echo 'Erro: ' . $e->getMessage();
         }
         unset($this->DB);
-    }    
+    }
+
+    /*public function PessoaListar(&$erro)
+    {
+        try 
+        {
+            $this->DB = new Conn;
+
+            $sql = $this->sql_lst;
+
+            $result = $this->DB->OpenQuery($sql, null);
+            return $result->fetchAll();
+        } catch(PDOException $e) 
+        {
+            echo 'Erro: ' . $e->getMessage();
+        }
+        unset($this->DB);
+    } */
+
+    public function PessoaExiste($ID_PESSOA, &$erro)
+    {
+        try 
+        {
+            $this->DB = new Conn;
+
+            $sql = $this->sql_loc;
+
+            $result = $this->DB->OpenQuery($sql, array (
+                                                    ':ID_PESSOA' => $ID_PESSOA
+                                                    ));
+            $result->fetchAll();
+        } catch(PDOException $e) 
+        {
+            echo 'Erro: ' . $e->getMessage();
+        }
+        unset($this->DB);
+    } 
+
+    public function PessoaGet($ID_PESSOA, &$erro)
+    {
+        try 
+        {
+            $this->DB = new Conn;
+
+            $sql = $this->sql_get;
+
+            $result = $this->DB->OpenQuery($sql, array (
+                                                    ':ID_PESSOA' => $ID_PESSOA
+                                                    ));
+            return $result->fetchAll();
+        } catch(PDOException $e) 
+        {
+            echo 'Erro: ' . $e->getMessage();
+        }
+        unset($this->DB);
+    }     
     //*************************************************
 }
-/*$nome = $_POST['nome'];
-$endereco = $_POST['endereco'];
-$cpf = $_POST['cpf'];
-$idade = $_POST['idade'];
-$sexo = $_POST['sexo'];*/
-
-/*$DB = new Conn;
-
-$DB->adicionar_cliente($nome, $endereco, $idade, $cpf, $sexo);
-
-unset($DB);*/
-
-$P = new Pessoa;
-
-//INSERT 
-/*
-if ($P->PessoaADD(11167662,
-              'Rubens barichello',
-              '(19)99988-5555',
-              'S',
-              'semnenha',
-              'eu@uol.com.br',
-              'S',
-              'S',
-              'S',
-              'CTZ2-Marinha 289545-ALPHA',
-              'telefone da visinha 19-65899-9999 Joana Dark',
-              'Rua Godofredo Bartolomeu',
-              600,
-              'Bairro Boa Vista',
-              'Cidade de Deus',
-              13488760,
-              'bloco 20 apto 88',
-              'SP',
-              $erro
-    ) > 0)
-    echo 'Inserido com sucesso !';
-  else
-  echo 'Falhou ! <br/> Motivo:<br/>'.$erro;
-*/
-
-//UPDATE
-/*if ($P->PessoaUPD(30, //chave q está alterando
-              'Rubens barichello alterado',
-              '(19)99988-5555',
-              'S',
-              'eu@uol.com.br',
-              'S',
-              'S',
-              'S',
-              'CTZ2-Marinha 289545-ALPHA',
-              'telefone da visinha 19-65899-9999 Joana Dark',
-              'Rua Godofredo Bartolomeu',
-              600,
-              'Bairro Boa Vista',
-              'Cidade de Deus',
-              13488760,
-              'bloco 20 apto 88',
-              'SP',
-              $erro
-    ) > 0)
-    echo 'Alterado com sucesso !';
-  else
-  echo 'Falhou ! <br/> Motivo:<br/>'.$erro;*/
-
-//DELETE
-if ($P->PessoaDEL(30, //chave q está alterando
-              $erro
-    ) > 0)
-    echo 'Excluído com sucesso !';
-  else
-  {
-      if ($erro != "")
-        echo 'Falhou ! <br/> Motivo:<br/>'.$erro;
-      else
-        echo 'Registro não encontrado.<br/>';
-  }
-
-unset($P);  
-
 ?>
