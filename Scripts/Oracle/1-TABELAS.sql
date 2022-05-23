@@ -49,9 +49,9 @@ ORDER;
 CREATE TABLE DESASTRE 
 (
     ID_DESASTRE NUMBER       NOT NULL,
-    TIPO        CHAR(1)      DEFAULT 'D' NOT NULL,
+    TIPO        CHAR(1)      NOT NULL,
     DATA        DATE         NOT NULL,
-    ATIVO       CHAR(1)      DEFAULT 'A' NOT NULL,
+    ATIVO       CHAR(1)      DEFAULT 'S' NOT NULL,
     CIDADE      VARCHAR2(30) NOT NULL,
     UF          VARCHAR2(2)  NOT NULL
 );
@@ -89,7 +89,7 @@ ORDER;
 CREATE TABLE UNIDATENDTO 
 (
     ID_UNIDATENDTO NUMBER     NOT NULL,
-    ATIVO          CHAR(1)    DEFAULT 'A' NOT NULL,
+    ATIVO          CHAR(1)    DEFAULT 'S' NOT NULL,
     FONES          VARCHAR2(50),
     EMAIL          VARCHAR2(50),
     SITE           VARCHAR2(50),

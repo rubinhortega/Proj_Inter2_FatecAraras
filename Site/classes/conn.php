@@ -136,40 +136,26 @@ class Conn
 
             return 0;
         }
-        /*  EXEMPLO DE USO
-
-            //com params
-            if ($DB->PreparaSQL('UPDATE PESSOA SET CPF = :CPF WHERE 1=2'))
-            {
-                $rec = $DB->Exec_SQL( array (
-                                                ':CPF' => '123'
-                                            ));
-                if ($rec > 0)
-                    echo $rec. " linhas afetadas.<br/>";
-                else
-                    echo "Nenhuma linha afetada.<br/>";
-            }
-
-            //sem params
-            if ($DB->PreparaSQL("DELETE FROM PESSOA WHERE 1=2"))
-            {
-                $rec = $DB->Exec_SQL( null );
-
-                if ($rec > 0)
-                    echo $rec. " linhas afetadas.<br/>";
-                else
-                    echo "Nenhuma linha afetada.<br/>";
-            }
-        */
     }
 
     public function OpenQuery($txt)
     {
         $this->_SQL = $txt;
+        $this->erro = "";
 
         try 
         {
-            $result = $this->conn->query($this->_SQL);
+            if ($CMPS == null)
+                $result = $this->conn->query($this->_SQL);
+            else
+            {
+                if ($this->PreparaSQL($txt))
+                {
+                    $this->stmt->execute( $CMPS );
+                    
+                    $result = $this->stmt;//para usar o mesmo retorno
+                }
+            }
             
             return $result;
         } catch(PDOException $e) 
@@ -185,14 +171,6 @@ class Conn
             if ($this->DEBUG)
                 die($this->erro);
         }
-        /*  EXEMPLO DE USO
-
-            $sql = "SELECT * FROM PESSOA";
-            if ($DB->OpenQuery($sql) > 0)
-                echo "Comando executado.<br/>";
-            else
-                echo "Comando não executou.<br/>";
-        */
     }
     //*************************************************
 }
