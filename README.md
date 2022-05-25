@@ -10,7 +10,7 @@
 
 # Sobre o projeto
 
-SOS é uma aplicação full stack web construída durante o 2º Semestre de Desenvolvimento de Software e Multiplataforma da turma DSM-02/2021.
+SADN é uma aplicação full stack web construída durante o 2º Semestre de Desenvolvimento de Software e Multiplataforma da turma DSM-02/2021.
 A aplicação consiste em dar apoio para os grupos de desastres naturais, por ajudar com as informações que as prórias pessoas e parentes que são cadastrada no sistema de ajuda. E terá sistema de informações para o publico e para quem estão procurando parentes ou amigos que estavam no desastre.
 
 
