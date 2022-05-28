@@ -1,0 +1,8 @@
+data 28/05/2022
+
+participantes: Dani, William
+
+Assuntos abordados:
+- campos necessarios na tela de cadastro de pessoas
+- tela de login
+- tela de localização de desastres

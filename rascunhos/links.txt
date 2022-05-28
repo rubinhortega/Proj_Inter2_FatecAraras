@@ -1,0 +1,5 @@
+caixa de texto para digitar campo tipo -> blob
+https://www.htmlprogressivo.net/2014/01/Grandes-Caixas-de-Texto-textarea-em-Formularios.html
+
+caixa de seleção tipo (s/n)
+https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/Input/checkbox
