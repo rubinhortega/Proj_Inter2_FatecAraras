@@ -132,7 +132,7 @@ class Pessoa
     
     private $sql_loc = 'SELECT COUNT(*) REGS FROM PESSOA WHERE ID_PESSOA = :ID_PESSOA';
 
-    private $sql_get = 'SELECT ID_ALUNO, 
+    private $sql_get = 'SELECT ID_PESSOA, 
                                NOME,
                                FONE,
                                EHWHATS,
@@ -175,7 +175,7 @@ class Pessoa
         if ($CPF != null)
             //if ($this->DB->PreparaSQL($sql))
             {
-                $dados = $this->DB->OpenQuery($sql);
+                $dados = $this->DB->OpenQuery($sql, null);
                 
                 $linhas = $dados->fetchAll();
 

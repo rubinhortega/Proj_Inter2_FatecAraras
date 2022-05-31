@@ -5,8 +5,8 @@ class Conn
     //*************************************************
     //   setagem do banco em utilização
     //*************************************************
-    private $BANCO = "ORACLE";
-    //private $BANCO = "MYSQL";
+    //private $BANCO = "ORACLE";
+    private $BANCO = "MYSQL";
 
     //para produção deixar como FALSE
     private $DEBUG = /*TRUE;/*/FALSE;
@@ -138,7 +138,7 @@ class Conn
         }
     }
 
-    public function OpenQuery($txt)
+    public function OpenQuery($txt, $CMPS)
     {
         $this->_SQL = $txt;
         $this->erro = "";
