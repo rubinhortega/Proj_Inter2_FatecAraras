@@ -12,6 +12,7 @@ class UnidAtendto
     //*************************************************
     private $sql_insORA = 'INSERT INTO UNIDATENDTO(ID_UNIDATENDTO,
                                                    ATIVO,
+                                                   NOME,
                                                    FONES,
                                                    EMAIL,
                                                    SITE,
@@ -26,6 +27,7 @@ class UnidAtendto
                                                    OBS)
                                             VALUES(UNIDATENDTO_SEQ.NEXTVAL,
                                                    :ATIVO,
+                                                   :NOME,
                                                    :FONES,
                                                    :EMAIL,
                                                    :SITE,
@@ -41,6 +43,7 @@ class UnidAtendto
     
     private $sql_insMYSQL = 'INSERT INTO UNIDATENDTO(ID_UNIDATENDTO,
                                                      ATIVO,
+                                                     NOME,
                                                      FONES,
                                                      EMAIL,
                                                      SITE,
@@ -55,6 +58,7 @@ class UnidAtendto
                                                      OBS)
                                               VALUES(NEXT VALUE FOR UNIDATENDTO_SEQ,
                                                      :ATIVO,
+                                                     :NOME,
                                                      :FONES,
                                                      :EMAIL,
                                                      :SITE,
@@ -70,6 +74,7 @@ class UnidAtendto
 
     private $sql_updORA = 'UPDATE UNIDATENDTO
                               SET ATIVO     = :ATIVO,
+                                  NOME      = :NOME,
                                   FONES     = :FONES,
                                   EMAIL     = :EMAIL,
                                   SITE      = :SITE,
@@ -86,6 +91,7 @@ class UnidAtendto
 
     private $sql_updMYSQL = 'UPDATE UNIDATENDTO
                                 SET ATIVO     = :ATIVO,
+                                    NOME      = :NOME,
                                     FONES     = :FONES,
                                     EMAIL     = :EMAIL,
                                     SITE      = :SITE,
@@ -108,6 +114,7 @@ class UnidAtendto
 
     private $sql_get = 'SELECT ID_UNIDATENDTO,
                                ATIVO,
+                               NOME,
                                FONES,
                                EMAIL,
                                SITE,
@@ -135,6 +142,7 @@ class UnidAtendto
     //   MÉTODOS 
     //*************************************************
     public function UnidAtendtoADD($ATIVO,
+                                   $NOME,
                                    $FONES,
                                    $EMAIL,
                                    $SITE,
@@ -162,6 +170,7 @@ class UnidAtendto
             {
                 $rec = $this->DB->Exec_SQL( array (
                                                 ':ATIVO'     => $ATIVO,
+                                                ':NOME'      => $NOME,
                                                 ':FONES'     => $FONES,
                                                 ':EMAIL'     => $EMAIL,
                                                 ':SITE'      => $SITE,
@@ -197,6 +206,7 @@ class UnidAtendto
 
     public function UnidAtendtoUPD($ID_UNIDATENDTO,
                                    $ATIVO,
+                                   $NOME,
                                    $FONES,
                                    $EMAIL,
                                    $SITE,
@@ -218,13 +228,13 @@ class UnidAtendto
             //************************************************
             // FAZ VALIDAçÔES
             //************************************************
-            $this->Nome($NOME);
+            /*$this->Nome($NOME);
 
             if ($this->erro <> "")
             {
               $erro = $this->erro;
               return 0;
-            }
+            }*/
             //************************************************
 
             if ($this->DB->getBanco() == "ORACLE")
@@ -232,12 +242,12 @@ class UnidAtendto
             else
                 $sql = $this->sql_updMYSQL;
 
-
             if ($this->DB->PreparaSQL($sql))
             {
                 $rec = $this->DB->Exec_SQL( array (
                                         ':ID_UNIDATENDTO' => $ID_UNIDATENDTO,
                                         ':ATIVO'          => $ATIVO,
+                                        ':NOME'           => $NOME,
                                         ':FONES'          => $FONES,
                                         ':EMAIL'          => $EMAIL,
                                         ':SITE'           => $SITE,

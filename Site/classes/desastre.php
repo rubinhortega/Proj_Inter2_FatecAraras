@@ -12,12 +12,14 @@ class Desastre
     //*************************************************
     private $sql_insORA = 'INSERT INTO DESASTRE(ID_DESASTRE,
                                                 TIPO,
+                                                NOME,
                                                 DATA,
                                                 ATIVO,
                                                 CIDADE,
                                                 UF)
                                          VALUES(DESASTRE_SEQ.NEXTVAL,
                                                 :TIPO,
+                                                :NOME,
                                                 :DATA,
                                                 :ATIVO,
                                                 :CIDADE,
@@ -25,12 +27,14 @@ class Desastre
 
     private $sql_insMYSQL = 'INSERT INTO DESASTRE(ID_DESASTRE,
                                                   TIPO,
+                                                  NOME,
                                                   DATA,
                                                   ATIVO,
                                                   CIDADE,
                                                   UF)
                                            VALUES(NEXT VALUE FOR DESASTRE_SEQ,
                                                   :TIPO,
+                                                  :NOME,
                                                   :DATA,
                                                   :ATIVO,
                                                   :CIDADE,
@@ -38,6 +42,7 @@ class Desastre
 
     private $sql_upd = 'UPDATE DESASTRE
                            SET TIPO   = :TIPO,
+                               NOME   = :NOME,
                                DATA   = :DATA,
                                ATIVO  = :ATIVO,
                                CIDADE = :CIDADE,
@@ -52,6 +57,7 @@ class Desastre
 
     private $sql_get = 'SELECT ID_DESASTRE,
                                TIPO,
+                               NOME,
                                DATA,
                                ATIVO,
                                CIDADE,
@@ -71,6 +77,7 @@ class Desastre
     //   MÉTODOS 
     //*************************************************
     public function DesastreADD($TIPO,
+                                $NOME,
                                 $DATA,
                                 $ATIVO,
                                 $CIDADE,
@@ -91,6 +98,7 @@ class Desastre
                 $rec = $this->DB->Exec_SQL( array (
                                                 ':CPF'    => $CPF,
                                                 ':TIPO'   => $TIPO,
+                                                ':NOME'   => $NOME,
                                                 ':DATA'   => $DATA,
                                                 ':ATIVO'  => $ATIVO,
                                                 ':CIDADE' => $CIDADE,
@@ -118,6 +126,7 @@ class Desastre
 
     public function DesastreUPD($ID_DESASTRE,
                                 $TIPO,
+                                $NOME,
                                 $DATA,
                                 $ATIVO,
                                 $CIDADE,
@@ -146,8 +155,8 @@ class Desastre
             {
                 $rec = $this->DB->Exec_SQL( array (
                                         ':ID_DESASTRE' => $ID_DESASTRE,
-                                        ':CPF'         => $CPF,
                                         ':TIPO'        => $TIPO,
+                                        ':NOME'        => $NOME,
                                         ':DATA'        => $DATA,
                                         ':ATIVO'       => $ATIVO,
                                         ':CIDADE'      => $CIDADE,
