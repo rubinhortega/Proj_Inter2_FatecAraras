@@ -48,6 +48,7 @@ NOCACHE;
 CREATE TABLE DESASTRE 
 (
     ID_DESASTRE INT         NOT NULL,
+    NOME        VARCHAR(50) NOT NULL,
     TIPO        CHAR(1)     NOT NULL,
     DATA        DATE        NOT NULL,
     ATIVO       CHAR(1)     DEFAULT 'S' NOT NULL,
@@ -87,6 +88,7 @@ NOCACHE;
 CREATE TABLE UNIDATENDTO 
 (
     ID_UNIDATENDTO INT        NOT NULL,
+    NOME           VARCHAR(50) NOT NULL,
     ATIVO          CHAR(1)    DEFAULT 'S' NOT NULL,
     FONES          VARCHAR(50),
     EMAIL          VARCHAR(50),
