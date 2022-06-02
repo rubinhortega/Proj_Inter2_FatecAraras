@@ -146,13 +146,14 @@ class Conn
         try 
         {
             if ($CMPS == null)
+            {
                 $result = $this->conn->query($this->_SQL);
+            }
             else
             {
                 if ($this->PreparaSQL($txt))
                 {
                     $this->stmt->execute( $CMPS );
-                    
                     $result = $this->stmt;//para usar o mesmo retorno
                 }
             }

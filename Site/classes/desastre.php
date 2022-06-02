@@ -12,14 +12,14 @@ class Desastre
     //*************************************************
     private $sql_insORA = 'INSERT INTO DESASTRE(ID_DESASTRE,
                                                 TIPO,
-                                                NOME,
+                                                DESCRICAO,
                                                 DATA,
                                                 ATIVO,
                                                 CIDADE,
                                                 UF)
                                          VALUES(DESASTRE_SEQ.NEXTVAL,
                                                 :TIPO,
-                                                :NOME,
+                                                :DESCRICAO,
                                                 :DATA,
                                                 :ATIVO,
                                                 :CIDADE,
@@ -27,14 +27,14 @@ class Desastre
 
     private $sql_insMYSQL = 'INSERT INTO DESASTRE(ID_DESASTRE,
                                                   TIPO,
-                                                  NOME,
+                                                  DESCRICAO,
                                                   DATA,
                                                   ATIVO,
                                                   CIDADE,
                                                   UF)
                                            VALUES(NEXT VALUE FOR DESASTRE_SEQ,
                                                   :TIPO,
-                                                  :NOME,
+                                                  :DESCRICAO,
                                                   :DATA,
                                                   :ATIVO,
                                                   :CIDADE,
@@ -42,7 +42,7 @@ class Desastre
 
     private $sql_upd = 'UPDATE DESASTRE
                            SET TIPO   = :TIPO,
-                               NOME   = :NOME,
+                               DESCRICAO   = :DESCRICAO,
                                DATA   = :DATA,
                                ATIVO  = :ATIVO,
                                CIDADE = :CIDADE,
@@ -57,18 +57,53 @@ class Desastre
 
     private $sql_get = 'SELECT ID_DESASTRE,
                                TIPO,
-                               NOME,
+                               DESCRICAO,
                                DATA,
                                ATIVO,
                                CIDADE,
                                UF
                           FROM DESASTRE 
                          WHERE ID_DESASTRE = :ID_DESASTRE';
+
+    private $sql_lst = 'SELECT ID_DESASTRE,
+                               TIPO,
+                               DESCRICAO,
+                               DATA,
+                               ATIVO,
+                               CIDADE,
+                               UF
+                               FROM DESASTRE';
     //*************************************************
 
     //*************************************************
     //   MÉTODOS - VALIDAÇÕES
     //*************************************************
+    private function DescricaoUnica($DESCRICAO, $ID)
+    {
+        $sql = 'SELECT COUNT(*) REGS FROM DESASTRE WHERE DESCRICAO = "'.$DESCRICAO.'" ';
+        
+        if ($ID != null)
+            $sql = $sql . ' AND ID_DESASTRE <> '.$ID;
+        
+        if ($DESCRICAO != null)
+            //if ($this->DB->PreparaSQL($sql))
+            {
+                $dados = $this->DB->OpenQuery($sql, null);
+                
+                $linhas = $dados->fetchAll();
+
+                foreach($linhas as $lin) 
+                {
+                    if ($lin['REGS'] > 0)
+                    {
+                        $this->erro = $this->erro . "Descrição já cadastrada.<br/>";
+                        return FALSE;
+                    }
+                    else
+                        return TRUE;
+                }
+            }
+    }
 
 
     //*************************************************
@@ -77,7 +112,7 @@ class Desastre
     //   MÉTODOS 
     //*************************************************
     public function DesastreADD($TIPO,
-                                $NOME,
+                                $DESCRICAO,
                                 $DATA,
                                 $ATIVO,
                                 $CIDADE,
@@ -87,6 +122,18 @@ class Desastre
         try 
         {
             $this->DB = new Conn;
+
+            //************************************************
+            // FAZ VALIDAçÔES
+            //************************************************
+            $this->DescricaoUnica($DESCRICAO, null);
+
+            if ($this->erro <> "")
+            {
+              $erro = $this->erro;
+              return 0;
+            }
+            //************************************************
             
             if ($this->DB->getBanco() == "ORACLE")
                 $sql = $this->sql_insORA;
@@ -96,13 +143,12 @@ class Desastre
             if ($this->DB->PreparaSQL($sql))
             {
                 $rec = $this->DB->Exec_SQL( array (
-                                                ':CPF'    => $CPF,
-                                                ':TIPO'   => $TIPO,
-                                                ':NOME'   => $NOME,
-                                                ':DATA'   => $DATA,
-                                                ':ATIVO'  => $ATIVO,
-                                                ':CIDADE' => $CIDADE,
-                                                ':UF'     => $UF
+                                                ':TIPO'      => $TIPO,
+                                                ':DESCRICAO' => $DESCRICAO,
+                                                ':DATA'      => $DATA,
+                                                ':ATIVO'     => $ATIVO,
+                                                ':CIDADE'    => $CIDADE,
+                                                ':UF'        => $UF
                                             ));
                 
                 $erro = $this->DB->getErro();
@@ -126,7 +172,7 @@ class Desastre
 
     public function DesastreUPD($ID_DESASTRE,
                                 $TIPO,
-                                $NOME,
+                                $DESCRICAO,
                                 $DATA,
                                 $ATIVO,
                                 $CIDADE,
@@ -140,7 +186,7 @@ class Desastre
             //************************************************
             // FAZ VALIDAçÔES
             //************************************************
-            $this->Nome($NOME);
+            $this->DescricaoUnica($DESCRICAO, $ID_DESASTRE);
 
             if ($this->erro <> "")
             {
@@ -156,7 +202,7 @@ class Desastre
                 $rec = $this->DB->Exec_SQL( array (
                                         ':ID_DESASTRE' => $ID_DESASTRE,
                                         ':TIPO'        => $TIPO,
-                                        ':NOME'        => $NOME,
+                                        ':DESCRICAO'   => $DESCRICAO,
                                         ':DATA'        => $DATA,
                                         ':ATIVO'       => $ATIVO,
                                         ':CIDADE'      => $CIDADE,

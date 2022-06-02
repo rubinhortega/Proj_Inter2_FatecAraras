@@ -225,18 +225,6 @@ class UnidAtendto
         {
             $this->DB = new Conn;
 
-            //************************************************
-            // FAZ VALIDAçÔES
-            //************************************************
-            /*$this->Nome($NOME);
-
-            if ($this->erro <> "")
-            {
-              $erro = $this->erro;
-              return 0;
-            }*/
-            //************************************************
-
             if ($this->DB->getBanco() == "ORACLE")
                 $sql = $this->sql_updORA;
             else

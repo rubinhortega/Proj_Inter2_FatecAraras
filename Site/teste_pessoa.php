@@ -4,7 +4,7 @@
     //if (isset($_POST['gravar']))
     {
         $ID_PESSOA = 7;
-        $CPF = 12346;
+        $CPF = "12346";
         $NOME = "TESTES 2222222";
         $FONE = "19-555-99999";
         $EHWHATS = "S";
