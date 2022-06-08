@@ -1,17 +1,3 @@
-<?php
- 
-
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    session_start();
-    if($_POST['username'] == 'orlando' and $_POST['password'] == '123mudar'){
-        $_SESSION['loggedin'] = TRUE;
-        $_SESSION["username"] = 'Orlando Saraiva';
-         header("location: welcome.php");
-    } else {
-        $_SESSION['loggedin'] = FALSE;
-    }
-}
-?>
 
 
 <!DOCTYPE html>
@@ -30,18 +16,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="left-login">
             <h1>SADN</h1>
             <p>Sistema de Apoio a Desastre Natural</p>
-            <img src="img/Tablet login-pana.svg" class="left-login-image"alt="">
+            <img src="imagens/Tablet login-pana.svg" class="left-login-image"alt="">
         </div>
         <div class="right-login">
             <div class="card-login">
                 <h1>LOGIN</h1>
                 <div class="textfield">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" name="usuario" placeholder="Usuário">
+                    <label for="username">Usuário</label>
+                    <input type="text" name="username" placeholder="Usuário">
                 </div>
                 <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="Senha">
+                    <label for="password">Senha</label>
+                    <input type="password" name=password" placeholder="Senha">
                 </div>
                 <button class="btn-login">Login</button>
                 <div class="cadr">
