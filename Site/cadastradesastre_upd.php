@@ -62,7 +62,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,7 +72,7 @@
 </head>
 <body>
     <div class="box">
-        <form action="cadastrodesastre_upd.svg" method="POST">
+        <form action="cadastrodesastre_upd.php" method="POST">
             <fieldset>
                 <legend><b>Cadastro de Desastre- Alteração</b></legend>
                 <br>
