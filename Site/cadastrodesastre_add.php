@@ -41,7 +41,7 @@
 <body>
     <div class="container">
         <div class="form-image">
-            <img src="img/Firefighter-amico.svg" alt="">
+            <img src="imagens/Firefighter-amico.svg" alt="">
         </div>
         <div class="form">
             <form action="cadastrodesastre_add.php" method="POST">
