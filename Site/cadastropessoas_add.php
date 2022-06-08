@@ -72,7 +72,7 @@
 <body>
     <div class="container">
         <div class="form-image">
-            <img src="img/Global warming-rafiki.svg" alt="">
+            <img src="imagens/Global warming-rafiki.svg" alt="">
         </div>
         <div class="form">
             <form action="cadastropessoas_add.php" method="POST">
