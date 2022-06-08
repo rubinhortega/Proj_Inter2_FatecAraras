@@ -106,7 +106,7 @@
 <body>
     <div class="container">
         <div class="form-image">
-            <img src="img/Global warming-rafiki.png" alt="">
+            <img src="img/Global warming-rafiki.svg" alt="">
         </div>
         <div class="form">
             <form action="cadastropessoas_upd.php" method="POST">
@@ -123,13 +123,10 @@
                         </div>
                             <div class="input-box">
                             <label for="cpf">CPF</label>
-                            <input id="cpf" type="text" name="cpf" value="<?php echo $CPF ?>"placeholder="xxx.xxx.xxx-xx">
+                            <input id="cpf" type="hidden" name="cpf" value="<?php echo $CPF ?>"placeholder="xxx.xxx.xxx-xx">
                         </div>
                         <div class="input-box">
-                            <label for="fone">Celular</label>
-                            <input id="fone" type="tel" name="fone" placeholder="(xx) xxxxx-xxxx" value="<?php echo $FONE ?>" required>
-                            <input type="checkbox" id="what" name="S" value="what">
-                            <label for="what">É WhatsApp</label>
+                            <input type="checkbox" name="what[]" value=on>Tem WhatsApp?<br>
                         </div>
                         <div class="input-box">
                             <label for="logradouro">Logradouro</label>

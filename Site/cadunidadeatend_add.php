@@ -60,7 +60,7 @@
 <body>
     <div class="container">
         <div class="form-image">
-            <img src="img/Hospital building-rafiki.png" alt="">
+            <img src="img/Hospital building-rafiki.svg" alt="">
         </div>
         <div class="form">
             <form action="cadunidadeatend_add.php" method="POST">

@@ -75,7 +75,7 @@
 <body>
     <div class="container">
         <div class="form-image">
-            <img src="img/Hospital bed-amico.png" alt="">
+            <img src="img/Hospital bed-amico.svg" alt="">
         </div>
         <div class="form">
             <form action="cadastrovitimas_upd.php" method="POST">

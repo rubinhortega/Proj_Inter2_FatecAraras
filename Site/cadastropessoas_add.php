@@ -3,17 +3,19 @@
 
     if (isset($_POST['gravar']))
     {
+       $P = new Pessoa;
+
         
         $CPF     = $_POST['cpf'];
         $NOME    = $_POST['nome'];
         $FONE    = $_POST['fone'];
-        $EHWHATS = 'S';
+        $EHWHATS = $_POST['what'];
         $SENHA   =$_POST['password'];
         $EMAIL   =$_POST['email'];
-        $ATIVO   = 'S';
-        $EHOFICIAL = 'N';
-        $LIB_CADDESASTRE =$_POST['fone'];
-        $REGISTRO_OFICIAL = 's';
+        $ATIVO   = '';
+        $EHOFICIAL =$_POST['oficialck'];
+        $LIB_CADDESASTRE ="S";
+        $REGISTRO_OFICIAL =$_POST ['oficial'];
         $CONTATOS =$_POST['contatos'];
         $END_LOG =$_POST['logradouro'];
         $END_NUM =$_POST['n'];
@@ -23,9 +25,10 @@
         $END_COM =$_POST['complemento'];
         $END_UF  =$_POST['uf'];
 
-        $P = new Pessoa;
 
-        if ($P->PessoaADD($CPF,
+       $P = new Pessoa;
+
+      if ($P->PessoaADD($CPF,
                         $NOME,
                         $FONE,
                         $EHWHATS,
@@ -69,7 +72,7 @@
 <body>
     <div class="container">
         <div class="form-image">
-            <img src="img/Global warming-rafiki.png" alt="">
+            <img src="img/Global warming-rafiki.svg" alt="">
         </div>
         <div class="form">
             <form action="cadastropessoas_add.php" method="POST">
@@ -81,7 +84,7 @@
                 <div class="input-group">
                     <div class="input-box" >
                         <label for="nome">Nome Completo</label>
-                        <input id="nome" type="text" name="nome" placeholder="Digite seu nome Completo" required>
+                        <input id="nome" type="text" name="nome" placeholder="Digite seu nome Completo" >
                     </div>
                      <div class="input-box">
                         <label for="cpf">CPF</label>
@@ -89,33 +92,33 @@
                     </div>
                     <div class="input-box">
                         <label for="fone">Celular</label>
-                        <input id="fone" type="tel" name="fone" placeholder="(xx) xxxxx-xxxx" required>
-                        <input type="checkbox" id="what" name="S" value="what">
-                        <label for="what">É WhatsApp</label>
+                        <input id="fone" type="tel" name="fone" placeholder="(xx) xxxxx-xxxx" >
+                        <input type="checkbox" id="what" name="what[]" value="S">
+                        <label for="what">Tem WhatsApp.</label>
                     </div>
                     <div class="input-box">
                         <label for="logradouro">Logradouro</label>
-                        <input id="logradouro" type="text" name="logradouro" placeholder="Digite o seu logradouro" required>
+                        <input id="logradouro" type="text" name="logradouro" placeholder="Digite o seu logradouro" >
                     </div>
                     <div class="input-box">
                         <label for="n">Nº</label>
-                        <input id="n" type="text" name="n" placeholder="Digite o número da sua recidência" required>
+                        <input id="n" type="text" name="n" placeholder="Digite o número da sua recidência" >
                     </div>
                     <div class="input-box">
                         <label for="bairro">Bairro</label>
-                        <input id="bairro" type="text" name="bairro" placeholder="Digite seu bairro" required>
+                        <input id="bairro" type="text" name="bairro" placeholder="Digite seu bairro" >
                     </div>
                     <div class="input-box">
                         <label for="cidade">Cidade</label>
-                        <input id="cidade" type="text" name="cidade" placeholder="Digite sua cidade" required>
+                        <input id="cidade" type="text" name="cidade" placeholder="Digite sua cidade" >
                     </div>
                     <div class="input-box">
                         <label for="uf">UF</label>
-                        <input id="uf" type="text" name="uf" placeholder="Digite seu estado" required>
+                        <input id="uf" type="text" name="uf" placeholder="Digite seu estado" >
                     </div>
                     <div class="input-box">
                         <label for="cep">CEP</label>
-                        <input id="cep" type="text" name="cep" placeholder="xx.xxx-xxx" required>
+                        <input id="cep" type="text" name="cep" placeholder="xx.xxx-xxx" >
                     </div>
                     <div class="input-box">
                         <label for="complemento">Complemento</label>
@@ -123,28 +126,29 @@
                     </div>
                     <div class="input-box">
                         <label for="email">E-mail</label>
-                        <input id="email" type="email" name="email" placeholder="Digite o e-mail" required>
+                        <input id="email" type="email" name="email" placeholder="Digite o e-mail" >
                     </div>
                     <div class="input-box">
                         <label for="password">Senha</label>
-                        <input id="password" type="password" name="password" placeholder="Digite a senha" required>
+                        <input id="password" type="password" name="password" placeholder="Digite a senha" >
                     </div>
                     <div class="input-box">
                         <label for="confirmpassword">Confirme a senha</label>
-                        <input id="confirmpassword" type="password" name="comfirmpassword" placeholder="Digite a senha" required>
+                        <input id="confirmpassword" type="password" name="comfirmpassword" placeholder="Digite a senha" >
                     </div>
                     <div class="input-box">
                         <label for="oficial">Número de registro</label>
                         <input id="oficial" type="text" name="oficial" placeholder="Digite o número do seu registro oficial">
-                        <input type="checkbox" id="oficial" name="N" value="oficial">
-                        <label for="oficial">Você é um oficial.</label>
+                        <input type="checkbox" id="oficialck" name="oficialck[]" value="S">
+                        <label for="oficialck">Eu sou oficial.</label>
                     </div>
                     <div class="input-box">
                         <label for="contatos">Contatos</label>
                         <textarea id="contatos" type="text" name="contatos"> Contatos de familiares </textarea>
                     </div>
                     <div class="continue-button ">
-                       <button><input type="submit" name="gravar" id="gravar" value="gravar"></button> 
+                        <button type="submit" name="grevar" id="gravar">Cadastrar</button>
+                       <button type="submit"><a href="index.php">Voltar</a></button>
                     </div>
                 </div>
             </form>

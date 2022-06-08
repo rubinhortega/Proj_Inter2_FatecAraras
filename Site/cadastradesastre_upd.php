@@ -72,7 +72,7 @@
 </head>
 <body>
     <div class="box">
-        <form action="cadastrodesastre_upd.php" method="POST">
+        <form action="cadastrodesastre_upd.svg" method="POST">
             <fieldset>
                 <legend><b>Cadastro de Desastre- Alteração</b></legend>
                 <br>
