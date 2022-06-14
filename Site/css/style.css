@@ -5,7 +5,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
-} 
+}
 
 body {
     width: 100%;
@@ -13,10 +13,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f8eadac5;
+    background: #00daab10;
 }
+
 .title {
-    color: #fff;
+    color: #ffffff;
     font-family: 'Inter', sans-serif;
 
 }
@@ -38,6 +39,14 @@ body {
     padding: 1rem;
 }
 
+.logo {
+    color: #06b48e;
+    position: absolute;
+    top: 0px;
+    z-index: -1;
+    font-family: 'Inter', sans-serif;
+}
+
 .form-image img {
     width: 23rem;
 }
@@ -49,7 +58,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(255, 111, 0);
+    background-color: #00daaa;
     padding: 3rem;
 }
 
@@ -106,7 +115,7 @@ body {
     margin-bottom: 1.1rem;
 }
 
-.input-box input{
+.input-box input {
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
@@ -117,6 +126,7 @@ body {
 .input-box input:hover {
     background-color: #ffffff;
 }
+
 .input-box input:focus-visible {
     outline: 1px solid #000000;
 }
@@ -130,7 +140,7 @@ body {
 }
 
 .input-box input::placeholder {
-    color: rgb(255, 111, 0);
+    color: #509d87;
     font-family: 'Inter', sans-serif;
 }
 
@@ -155,21 +165,23 @@ body {
     font-weight: 600;
     color: #000000;
 }
+
 .input-box select {
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
     border-radius: 10px;
     box-shadow: 2px 2px 6px #0000001c;
-    color: rgb(255, 111, 0);
+    color: #509d87;
 }
+
 .input-box textarea {
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
     border-radius: 10px;
     box-shadow: 2px 2px 6px #0000001c;
-    color: rgb(255, 111, 0);
+    color: #509d87;
 }
 
 .continue-button button {
@@ -177,7 +189,7 @@ body {
     margin-top: 2.5rem;
     border: none;
     background-color: #ffffff;
-    padding:  0.62rem;
+    padding: 0.62rem;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -190,10 +202,10 @@ body {
     text-decoration: none;
     font-size: 0.93;
     font-weight: 500;
-    color: rgb(255, 111, 0);
+    color: #509d87;
 }
 
-@media only screen and (max-width: 950px){
+@media only screen and (max-width: 950px) {
     .input-group {
         width: 100%;
 
@@ -202,20 +214,24 @@ body {
 
 @media only screen and (max-width: 600px) {
     .container {
-      flex-direction: column;
+        flex-direction: column;
     }
+
     .form {
         width: 100%;
         height: auto;
     }
+
     .form-image {
         width: auto;
         height: auto;
-       
+
     }
+
     .form-image image {
         width: auto;
     }
+
     .input-group {
         width: 100%;
     }
