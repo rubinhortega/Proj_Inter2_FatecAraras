@@ -76,6 +76,11 @@
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+           <h1><img src="imagens/logo.png" alt="">SADN
+           </h1>
+           <p>Sistema de Apoio a Desastre Natural</p>
+        </div>
         <div class="form-image">
             <img src="imagens/Global warming-rafiki.svg" alt="">
         </div>
@@ -91,7 +96,7 @@
                         <label for="nome">Nome Completo</label>
                         <input id="nome" type="text" name="nome"  placeholder="Digite seu nome Completo" >
                     </div>
->                     <div class="input-box">
+                    <div class="input-box">
                         <label for="cpf">CPF</label>
                         <input id="cpf" type="text" name="cpf"  placeholder="xxx.xxx.xxx-xx">
                     </div>
