@@ -147,7 +147,7 @@
                         <textarea id="contatos" type="text" name="contatos"> Contatos de familiares </textarea>
                     </div>
                     <div class="continue-button ">
-                        <button type="submit" name="grevar" id="gravar">Cadastrar</button>
+                        <button type="submit" name="gravar" id="gravar">Cadastrar</button>
                        <button type="submit"><a href="index.php">Voltar</a></button>
                     </div>
                 </div>
