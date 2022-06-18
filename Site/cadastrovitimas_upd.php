@@ -1,9 +1,9 @@
 <?php
     include_once 'classes\vitima.php';
     
-    if (!empty($_GET['id']))
+    if (!empty($_GET['ID_LISTA']))
     {
-        $id = $_GET['id'];
+        $id = $_GET['ID_LISTA'];
 
         $V = new Vitima;
         $linhas = $V->VitimaExiste($ID_LISTA, $erro);
@@ -19,13 +19,15 @@
             $linhas = $V->VitimaGet($ID_LISTA, $erro);
             foreach ($linhas as $lin)
             {
-                $ID    = $lin['ID_LISTA'];
-                $ID    = $lin['ID_UNIDATENDTO'];
+                $ID_LISTA = $lin['ID_LISTA'];
+                $ID_UNIDATENDTO = $lin['ID_UNIDATENDTO'];
+                $INSERIDOPOR = $lin['INSERIDOR'];
                 $NOME  = $lin['NOME'];
                 $CPF   = $lin['CPF'];
                 $IDADE = $lin['IDADE'];
                 $OBTO  = $lin['OBTO'];
                 $ENCERRADO = $lin['ENCERRADO'];
+                $DATA_HORA = $lin['DATA_HORA'];
                 $CARACTERISTICAS = $lin['CARACTERISTICAS'];
             }
         }
@@ -33,24 +35,21 @@
 
     if (isset($_POST['gravar']))
     {
-        $ID_LISTA  = $_POST['id'];
-        $ID_UNIDATENDTO  = $_POST['id'];
+        $ID_LISTA  = $_POST['ID_LISTA'];
+        $ID_UNIDATENDTO  = $_POST['ID_UNIDATENDTO'];
+        $INSERIDOPOR = $_POST['nomein'];
         $NOME  = $_POST['nomevit'];
         $CPF = $_POST['cpf'];
         $IDADE  = $_POST['idade'];
-        $OBTO  = '';
-        $ENCERRADO  = '';
+        $OBTO  = $_POST['obito'];
+        if (empty($OBTO)) {
+            $OBTO = 'N';
+        }
+        $ENCERRADO  = 'N';
         $CARACTERISTICAS  = $_POST['caract'];
 
         $V = new Vitima;
-        if ($V->VitimaUPD($ID_LISTA,
-                          $ID_UNIDATENDTO,
-                          $NOME,
-                          $CPF,
-                          $IDADE,
-                          $OBTO,
-                          $ENCERRADO,
-                          $CARACTERISTICAS, $erro) > 0)
+        if ($V->VitimaUPD($ID_LISTA, $ID_UNIDATENDTO, $INSERIDOPOR, $NOME, $CPF, $IDADE, $OBTO, $ENCERRADO, $CARACTERISTICAS, $erro) > 0)
         {
             //echo 'Alterado com sucesso !';
             header("location: index.php");
@@ -74,20 +73,25 @@
 </head>
 <body>
     <div class="container">
+        <div class="logo">
+           <h1><img src="imagens/logo.png" alt="">SADN
+           </h1>
+           <p>Sistema de Apoio a Desastre Natural</p>
+        </div>
         <div class="form-image">
             <img src="imagens/Hospital bed-amico.svg" alt="">
         </div>
         <div class="form">
-            <form action="cadastrovitimas_upd.php" method="POST">
+            <form action="cadastrovitimas_add.php" method="POST">
                 <div class="form-header">
                     <div class="title">
-                        <h1>Atualizar Vitima</h1>
+                        <h1>Atualizar Cadastro de Vitima</h1>
                     </div>
                 </div>
                 <div class="input-group">
                     <div class="input-box">
-                        <label for="nomedes">Nome do desastre</label>
-                        <input id="nome" type="text" nome="nomedes" placeholder="Digite o nome do desastre">
+                        <label for="nomein">Nome do Inseridor</label>
+                        <input id="nomein" type="text" nome="nomein" placeholder="Digite o nome do desastre" required>
                     </div>
                     <div class="input-box">
                         <label for="name">Nome da vitima</label>
@@ -95,17 +99,15 @@
                     </div>
                     <div class="input-box">
                         <label for="cpf">CPF</label>
-                        <input id="cpf" type="text" name="cpf" placeholder="xxx.xxx.xxx-xx">
+                        <input id="cpf" type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" required>
                     </div>
                     <div class="input-box">
                         <label for="idadevit">Idade</label>
-                        <input id="idadevit" type="text" name="idadevit" placeholder="Digite a idade da vitima"
-                            required>
+                        <input id="idadevit" type="text" name="idadevit" placeholder="Digite a idade da vitima" required>
                     </div>
                     <div class="input-box">
                         <label for="datevit">Data e hora</label>
-                        <input id="datevit" type="datetime
-                        " name="datevit" required>
+                        <input id="datevit" type="datetime" name="datevit" required>
                     </div>
                     <div class="input-box">
                         <label for="cidade">Cidade</label>
@@ -116,22 +118,26 @@
                         <input id="uf" type="text" name="uf" placeholder="Digite seu estado" required>
                     </div>
                     <div class="input-box">
-                        <input type="checkbox" id="obito
-                        " name="obito" checked>
                         <label for="obito" style="color: #fff;">Óbito?</label>
+                        <input type="checkbox" id="obito" name="obito" value="S" checked>
                     </div>
                     <div class="input-box">
                         <label for="caract">Caracteristicas</label>
-                        <textarea id="caract" type="text" name="caract"> Digite as Caracteristicas da vitima</textarea>
-                    </div>
-                    <div class="continue-button ">
-                        <button><a href="encarrar" id="encerrar" name="encerrar" >encerrar</a></button>
+                        <textarea id="caract" type="text" name="caract" placeholder="Digite as Caracteristicas da vitima"></textarea>
                     </div>
                     <div class="input-box">
                         <label for="unidatend">Unidade de Atendimento</label>
-                        <select name="unidatend" id="unidatend" value="<?php echo $ID_UNIDATENDTO ?>" aria-placeholder="Unidade de Atendimento">
-                           
-                        </selec>
+                        <select name="unidatend" id="unidatend" placeholder="Unidade de Atendimento">
+                            <option value="">Santa Casa</option>
+                            <option value="">Unimed</option>
+                            <option value="">Amor saúde</option>
+                            <option value="">Pró-saúde</option>
+                            <option value="">UPA</option>
+                        </select>
+                    </div>
+                    <div class="continue-button ">
+                       <button type="submit" name="gravar" id="gravar">Alterar</button>
+                       <button type="submit"><a href="index.php">Voltar</a></button>
                     </div>
                 </div>
             </form>
