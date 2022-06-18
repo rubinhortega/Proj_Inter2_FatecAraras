@@ -91,39 +91,39 @@
                 <div class="input-group">
                     <div class="input-box">
                         <label for="nomein">Nome do Inseridor</label>
-                        <input id="nomein" type="text" nome="nomein" placeholder="Digite o nome do desastre" required>
+                        <input id="nomein" type="text" nome="nomein" placeholder="Digite o nome do desastre" value="<?php echo $INSERIDOPOR ?>" required>
                     </div>
                     <div class="input-box">
                         <label for="name">Nome da vitima</label>
-                        <input id="namevi" type="text" name="namevi" placeholder="Digite o nome da vitíma" required>
+                        <input id="namevi" type="text" name="namevi" placeholder="Digite o nome da vitíma" value="<?php echo $NOME ?>" required>
                     </div>
                     <div class="input-box">
                         <label for="cpf">CPF</label>
-                        <input id="cpf" type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" required>
+                        <input id="cpf" type="text" name="cpf" placeholder="xxx.xxx.xxx-xx" value="<?php echo $CPF ?>" required>
                     </div>
                     <div class="input-box">
                         <label for="idadevit">Idade</label>
-                        <input id="idadevit" type="text" name="idadevit" placeholder="Digite a idade da vitima" required>
+                        <input id="idadevit" type="text" name="idadevit" placeholder="Digite a idade da vitima" value="<?php echo $IDADE ?>" required>
                     </div>
                     <div class="input-box">
                         <label for="datevit">Data e hora</label>
-                        <input id="datevit" type="datetime" name="datevit" required>
+                        <input id="datevit" type="datetime" name="datevit" value="<?php echo $DATA_HORA ?>" required>
                     </div>
                     <div class="input-box">
                         <label for="cidade">Cidade</label>
-                        <input id="cidade" type="text" name="cidade" placeholder="Digite sua cidade" required>
+                        <input id="cidade" type="text" name="cidade" placeholder="Digite sua cidade" value="<?php echo $CIDADE ?>" required>
                     </div>
                     <div class="input-box">
                         <label for="uf">UF</label>
-                        <input id="uf" type="text" name="uf" placeholder="Digite seu estado" required>
+                        <input id="uf" type="text" name="uf" placeholder="Digite seu estado" value="<?php echo $UF ?>" required>
                     </div>
                     <div class="input-box">
                         <label for="obito" style="color: #fff;">Óbito?</label>
-                        <input type="checkbox" id="obito" name="obito" value="S" checked>
+                        <input type="checkbox" id="obito" name="obito" value="S" value="<?php echo $OBTO ?>">
                     </div>
                     <div class="input-box">
                         <label for="caract">Caracteristicas</label>
-                        <textarea id="caract" type="text" name="caract" placeholder="Digite as Caracteristicas da vitima"></textarea>
+                        <textarea id="caract" type="text" name="caract" placeholder="Digite as Caracteristicas da vitima" value="<?php echo $CARACTERISTICAS ?>"></textarea>
                     </div>
                     <div class="input-box">
                         <label for="unidatend">Unidade de Atendimento</label>
@@ -136,7 +136,7 @@
                         </select>
                     </div>
                     <div class="continue-button ">
-                       <button type="submit" name="gravar" id="gravar">Alterar</button>
+                        <button type="submit" name="gravar" id="gravar">Alterar</button>
                        <button type="submit"><a href="index.php">Voltar</a></button>
                     </div>
                 </div>
