@@ -1,10 +1,12 @@
+
 <?php
     include_once 'classes\desastre.php';
 
     if (isset($_POST['gravar']))
     {
-        $NAME  = $_POST['named'];
+        
         $TIPO  = $_POST['tipo'];
+        $DESCRICAO = $_POST['named'];
         $DATA  = $_POST['date'];
         $ATIVO =   'S';
         $CIDADE= $_POST['cidade'];
@@ -12,7 +14,7 @@
         
 
         $D = new Desastre;
-        if ($D->DesastreADD($NAME, $TIPO, $DATA, $ATIVO, $CIDADE, $UF, $erro) > 0)
+        if ($D->DesastreADD( $TIPO, $DESCRICAO, $DATA, $ATIVO, $CIDADE, $UF, $erro) > 0)
         {
             //echo 'Inserido com sucesso !';
             header("location: index.php");
@@ -39,6 +41,10 @@
 
 <body>
     <div class="container">
+        <div class="logo">
+           <h1><img src="imagens/logo.png" alt="">SADN</h1>
+           <p>Sistema de Apoio a Desastre Natural</p>
+        </div>
         <div class="form-image">
             <img src="imagens/Firefighter-amico.svg" alt="">
         </div>
@@ -67,12 +73,22 @@
                         <label for="uf">UF</label>
                         <input id="uf" type="text" name="uf" placeholder="Digite o estado do desastre" required>
                     </div>
-                    <div class="continue-button ">
-                        <button id="gravar" name="gravar"><input type="submit" name="gravar" id="gravar" value="gravar"></button>
-                    </div>
                     <div class="input-box">
                         <label for="tipo">Tipo de desastre</label>
                         <select name="tipo" id="tipo" aria-placeholder="Tipo de desastre">
+                            <option value="1">Afundamento e colapso</option>
+                            <option value="2">Ciclones, furacões ou tufões</option>
+                            <option value="3">Deslizamento ou escorregamento de terra</option>
+                            <option value="4">Inundações</option>
+                            <option value="5">Tempestades</option>
+                            <option value="6">Tornados</option>
+                            <option value="7">Outros fenômenos</option>
+                            <option value="X">PROCURADOS</option>
+                        </select> 
+                    </div>
+                    <div class="continue-button ">
+                       <button type="submit" name="gravar" id="gravar">Cadastrar</button>
+                       <button type="submit"><a href="index.php">Voltar</a></button>
                     </div>
                 </div>
             </form>
