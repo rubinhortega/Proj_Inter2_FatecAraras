@@ -20,8 +20,8 @@
         
 
         $U = new UnidAtendto;
-        if ($U->UnidatendtoADD($NOME,
-                                $ATIVO,
+        if ($U->UnidatendtoADD($ATIVO,
+                                $NOME,
                                 $FONES,
                                 $EMAIL,
                                 $SITE,
@@ -59,6 +59,11 @@
 
 <body>
     <div class="container">
+        <div class="logo">
+           <h1><img src="imagens/logo.png" alt="">SADN
+           </h1>
+           <p>Sistema de Apoio a Desastre Natural</p>
+        </div>
         <div class="form-image">
             <img src="imagens/Hospital building-rafiki.svg" alt="">
         </div>
@@ -113,14 +118,15 @@
                     </div>
                     <div class="input-box">
                         <label for="fone">Contatos</label>
-                        <textarea id="fone" type="text" name="fone"> Contatos da unidade de atendimento</textarea><br><br>
+                        <textarea id="fone" type="text" name="fone" placeholder="Contatos da unidade de atendimento"></textarea><br><br>
                     </div>
                     <div class="input-box">
                         <label for="Obs">Observações</label>
-                        <textarea id="Obs" type="text" name="Obs"> Observações</textarea><br><br>
+                        <textarea id="Obs" type="text" name="Obs" placeholder="Observações"></textarea><br><br>
                     </div>
                     <div class="continue-button ">
-                        <button id="gravar" name="gravar">Cadastrar</button>
+                        <button type="submit" name="gravar" id="gravar">Alterar</button>
+                       <button type="submit"><a href="index.php">Voltar</a></button>
                     </div>
                 </div>
             </form>
