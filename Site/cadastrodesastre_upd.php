@@ -1,9 +1,9 @@
 <?php
     include_once 'classes\desastre.php';
     
-    if (!empty($_GET['id']))
+    if (!empty($_GET['ID_DESASTRE']))
     {
-        $id = $_GET['id'];
+        $id = $_GET['ID_DESASTRE'];
 
         $D = new Desastre;
         $linhas = $D->DesastreExiste($ID_DESASTRE, $erro);
@@ -19,7 +19,6 @@
             $linhas = $D->DesastreGet($ID_DESASTRE, $erro);
             foreach ($linhas as $lin)
             {
-                $ID_DESASTRE = $lin['$ID_DESASTRE'];
                 $TIPO = $lin['TIPO'];
                 $DESCRICAO = $lin['DESCRICAO'];
                 $DATA = $lin['DATA'];
@@ -32,11 +31,10 @@
 
     if (isset($_POST['gravar']))
     {
-        $ID = $_POST['id'];
         $TIPO = $_POST['tipo'];
-        $DESCRICAO = $_POST['descricao'];
-        $DATA = $_POST['data'];
-        $ATIVO = '';
+        $DESCRICAO = $_POST['nomed'];
+        $DATA = $_POST['date'];
+        $ATIVO = 'N';
         $CIDADE = $_POST['cidade'];
         $UF = $_POST['uf'];
 
@@ -71,44 +69,59 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="box">
-        <form action="cadastrodesastre_upd.php" method="POST">
-            <fieldset>
-                <legend><b>Cadastro de Desastre- Alteração</b></legend>
-                <br>
-                <div class="input-box">
-                    <input type="text" name="tipo" id="tipo"  value="<?php echo $TIPO ?>" required>
-                    <label for="tipo">Tipo</label>
+    <div class="container">
+        <div class="logo">
+           <h1><img src="imagens/logo.png" alt="">SADN</h1>
+           <p>Sistema de Apoio a Desastre Natural</p>
+        </div>
+        <div class="form-image">
+            <img src="imagens/Firefighter-amico.svg" alt="">
+        </div>
+        <div class="form">
+            <form action="cadastrodesastre_upd.php" method="POST">
+                <div class="form-header">
+                    <div class="title">
+                        <h1>Alterar Cadastro de Desastre</h1>
+                    </div>
                 </div>
-                <br><br>
-                <div class="input-box">
-                    <input type="text" name="descricao" id="descricao" value="<?php echo $DESCRICAO ?>" required>
-                    <label for="descricao">Descrição</label>
+                <div class="input-group">
+                    <div class="input-box">
+                        <label for="named">Nome</label>
+                        <input id="named" type="text" name="named" placeholder="Nome do desastre" value="<?php echo $DESCRICAO ?>" required>
+                    </div>
+                    
+                    <div class="input-box">
+                        <label class="date" for="date">Data</label>
+                        <input  id="date" type="date" name="date" value="<?php echo $DATA ?>" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="cidade">Cidade</label>
+                        <input id="cidade" type="text" name="cidade" placeholder="Cidade do desastre" value="<?php echo $CIDADE ?>" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="uf">UF</label>
+                        <input id="uf" type="text" name="uf" placeholder="Digite o estado do desastre" value="<?php echo $UF ?>" required>
+                    </div>
+                    <div class="input-box">
+                        <label for="tipo">Tipo de desastre</label>
+                        <select name="tipo" id="tipo" aria-placeholder="Tipo de desastre" value="<?php echo $TIPO ?>" required>
+                            <option value="1">Afundamento e colapso</option>
+                            <option value="2">Ciclones, furacões ou tufões</option>
+                            <option value="3">Deslizamento ou escorregamento de terra</option>
+                            <option value="4">Inundações</option>
+                            <option value="5">Tempestades</option>
+                            <option value="6">Tornados</option>
+                            <option value="7">Outros fenômenos</option>
+                            <option value="X">PROCURADOS</option>
+                        </select> 
+                    </div>
+                    <div class="continue-button ">
+                        <button type="submit" name="gravar" id="gravar">Alterar</button>
+                       <button type="submit"><a href="index.php">Voltar</a></button>
+                    </div>
                 </div>
-                <br><br>
-                <div class="input-box">
-                    <input type="datetime" name="data" id="data" value="<?php echo $DATA ?>" required>
-                    <label for="data">Data e hora</label>
-                </div>
-                <br><br>
-                <div class="input-box">
-                    <input type="ativo" name="ativo" id="ATIVO"  value="<?php echo $ATIVO ?>" required>
-                    <label for="ATIVO">Ativo</label>
-                </div>
-                <div class="input-box">
-                    <input type="text" name="cidade" id="cidade"  value="<?php echo $CIDADE ?>" required>
-                    <label for="cidade">Cidade</label>
-                </div>
-                <div class="input-box">
-                    <input type="text" name="uf" id="uf"  value="<?php echo $UF ?>" required>
-                    <label for="uf">UF</label>
-                </div>
-                <br><br>
-                    <input type="hidden" name="id" id="id" value="<?php echo $id ?>">
-                    <input type="submit" name="gravar" id="gravar" class="btn btnok" value="Gravar">
-                    <input type="button" name="cancel" id="cancel" class="btn btnvoltar" value="Voltar" onclick="history.go(-1);">
-            </fieldset>
-        </form>
-    </div>  
+            </form>
+        </div>
+    </div>
 </body>
 </html>
