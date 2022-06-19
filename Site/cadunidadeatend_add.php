@@ -125,7 +125,7 @@
                         <textarea id="Obs" type="text" name="Obs" placeholder="Observações"></textarea><br><br>
                     </div>
                     <div class="continue-button ">
-                        <button type="submit" name="gravar" id="gravar">Alterar</button>
+                        <button type="submit" name="gravar" id="gravar">Cadastrar</button>
                        <button type="submit"><a href="index.php">Voltar</a></button>
                     </div>
                 </div>
