@@ -162,8 +162,9 @@
                         <textarea id="Obs" type="text" name="Obs" value="<?php echo $OBS ?>" placeholder="Observações"></textarea>
                     </div>
                     <div class="continue-button">
-                       <button type="submit" name="gravar" id="gravar">Cadastrar</button>
+                       <button type="submit" name="gravar" id="gravar">Atualizar</button>
                        <button type="submit"><a href="index.php">Voltar</a></button>
+                       <button type="submit"><a href="cadunidadeatend_del.php">Excluir</a></button>
                     </div>
                 </div>
             </form>
