@@ -192,8 +192,9 @@
                         <textarea id="contatos" type="text" name="contatos" placeholder="Contatos dos Familiares" value="<?php echo $CONTATOS ?>"></textarea>
                     </div>
                     <div class="continue-button ">
-                       <button type="submit" name="gravar" id="gravar">Cadastrar</button>
+                       <button type="submit" name="gravar" id="gravar">Atualizar</button>
                        <button type="submit"><a href="index.php">Voltar</a></button>
+                       <button type="submit"><a href="cadastropessoas_del.php">Excluir</a></button>
                     </div>
                 </div>
             </form>
