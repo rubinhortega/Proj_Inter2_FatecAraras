@@ -27,10 +27,11 @@
                 </div>
                 <nav class="desktop">
                     <ul>
-                        <li class="select"><span></span><a href="index.html">Home</a></li>
+</br>
+                        <li class="select"><span></span><a href="index.php">Home</a></li>
                         <li><span></span><a href="informacoes.php">Informações</a></li>
                         <li><span></span><a href="comunidades.php">Comunidades</a></li>
-                        <li><span></span><a href="orientacaoes.php">Orietações</a></li>
+                       <li><span></span><a href="orientacaoes.php">Orientações</a></li>
                         <li><span></span><a href="login.php">Login</a></li>
                     </ul>
                 </nav>
@@ -42,7 +43,7 @@
                         <li><span></span><a href="informacoes.php">Informações</a></li>
                         <li><span></span><a href="comunidades.php">Comunidades</a></li>
                         <li><span></span><a href="orientacaoes.php">Orientações</a></li>
-                        
+                        <li><span></span><a href="login.php">Login</a></li>
                     </ul>
                 </nav>
                 
@@ -431,24 +432,7 @@
                  José Ometto- Araras/SP
                 </p>
         </div>
-            <form>
-                <div class="form-group">
-                    <input type="text" name="nome" required placeholder="Digite seu nome">
-                </div>
-                <div
-                 class="form-group">
-                    <input type="text" name="email" required placeholder="Digite seu email">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="telefone" placeholder="Digite seu telefone">
-                </div>
-                <div class="form-group">
-                    <textarea name="mensagem" placeholder="Digite sua mensagem"></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="submit" name="enviar" value="Enviar">
-                </div>
-            </form>
+            
         </div>
     </section>
 

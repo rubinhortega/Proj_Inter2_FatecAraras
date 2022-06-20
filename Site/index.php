@@ -41,7 +41,6 @@
                         <li><span></span><a href="comunidades.php">Comunidades</a></li>
                         <li><span></span><a href="orientacaoes.php">Orientações</a></li>
                         <li><span></span><a href="login.php">Login</a></li>
-                        
                     </ul>
                 </nav>
                 
@@ -63,7 +62,7 @@
                         Ou procurar por algum desastre logo aqui abaixo:
                     </p>
                     <form>
-                        <input type="pesquisa" name="pesquisa" placeholder="Digite sua busca!" />
+                    
                         <input type="submit" name="acao" value="Pesquisar">
                     </form>
                     <span>Ou ligue para a Defesa Civil da Região atingida</span>
@@ -71,8 +70,8 @@
                 <!--one-->
                 <div class="two">
                     
-                    <img src="imagens/round_images/Rompim.jpg">
-                    <img src="imagens/round_images/Rompim.jpg.jpeg">
+                    <img src="imagens/round_images/Rompim1.jpg">
+                    <img src="imagens/round_images/Rompim.jpeg">
                     <img src="imagens/round_images/Rompim2.jpg">
                     <img src="imagens/round_images/Rompim3.jpg">
                     <div class="clear"></div>
@@ -89,41 +88,30 @@
     <section class="diferenciais" id="zero">
         <div class="container">
             <div class="diferencial-single">
-                <img src="imagens/icones/icone04.png">
+                <img src="imagens/icones/icone04.svg">
                 <h2>Veja a Lista de <b>Desaparecidos</b></h2>
-                <p>Desaparecido Nome e Sobrenome<br>
-                    Desaparecido Nome e Sobrenome<br>
-                    Desaparecido Nome e Sobrenome<br>
-                    Desaparecido Nome e Sobrenome<br>
-                    Desaparecido Nome e Sobrenome<br>
-                    Desaparecido Nome e Sobrenome<br>
-                </p>
+                <form>
+                <a href="desaparecidos.php"><button style="background: #00DAAA; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Acessar!</button></a>
+                </form> 
             </div>
             <!--diferencial-single-->
             <div class="diferencial-single">
                 <img src="imagens/icones/icone02.png">
+                <br><br><br><br><br><br><br>
                 <h2>Veja os Últimos <b>Desastres</b>
-                <p>Rompimento da barragem de Brumadinho (2019)<br>
+                <br><br>
+                <form>
+                <a href="cadastro_con"><button style="background: #00DAAA; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Acessar!</button></a>
+                </form> 
                
-                    Rompimento da barragem de Mariana (2015)<br>
-                    Incêndio na Ultracargo (2015)<br>
-                    Vazamento de óleo Bacia de Campos (2011)<br>
-                    Chuvas na região serrana do Rio (2011)<br>
-                    Rompimento de barragem em Miraí (2007)<br>
-                    Vazamento de barragem em Cataguases (2003)<br>
-                </p>
             </div>
             <!--diferencial-single-->
             <div class="diferencial-single">
-                <img src="imagens/icones/icone03.png">
+                <img src="imagens/icones/icone03.svg">
                 <h2>Estas São as <b>Comunidades de Apoio</b> Cadastradas</h2>
-                <p>Comunidade Ajuda<br>
-                <p>Comunidade Anjos<br>
-                <p>Comunidade Arcanjo<br>
-                <p>Comunidade Fraternal<br>
-                <p>Comunidade Mãos Que Ajudam<br>
-                <p>Comunidade Salva Vidas da Serra do Sol<br>
-                </p>
+                <form>
+                <a href="comunidades.php"><button style="background: #00DAAA; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Acessar!</button></a>
+                </form> 
             </div>
         </div>
         <!--container-->
@@ -275,24 +263,7 @@
                  José Ometto- Araras/SP
                 </p>
         </div>
-            <form>
-                <div class="form-group">
-                    <input type="text" name="nome" required placeholder="Digite seu nome">
-                </div>
-                <div
-                 class="form-group">
-                    <input type="text" name="email" required placeholder="Digite seu email">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="telefone" placeholder="Digite seu telefone">
-                </div>
-                <div class="form-group">
-                    <textarea name="mensagem" placeholder="Digite sua mensagem"></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="submit" name="enviar" value="Enviar">
-                </div>
-            </form>
+            
         </div>
     </section>
 
